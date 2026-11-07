@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: telegram-shop-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: CARD_NUMBER
+        sync: false
+      - key: CARD_OWNER
+        sync: false
